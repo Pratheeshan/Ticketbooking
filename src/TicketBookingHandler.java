@@ -31,7 +31,6 @@ public class TicketBookingHandler {
 
 		}
 		// preference not available -> book the available berth
-
 		else if (TicketBooker.available1stClass > 0) {
 			BookingStrategy bookingStrategy = new FirstClassBooking();
 			bookingStrategy.book(passenger);

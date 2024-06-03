@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class TicketBooker implements TicketBookingService{
+public class TicketBooker implements TicketBookingService {
 	// 63 berths(upper ,lower , middle) + ( 18 RAC passengers)
 	// 10 waiting list tickets ->21 L, 21 M, 21U , 18RAC, 10WL
 	static int available1stClass = 1;// normally 21
@@ -67,85 +67,25 @@ public class TicketBooker implements TicketBookingService{
 		System.out.println("-------------------------- added to Waiting List Successfully");
 	}
 
-	// cancel ticket
+	//Cancel ticket
 	public void cancelTicket(int passengerId) {
-		// remove the passenger from the map
-		Passenger passenger = passengers.get(passengerId);
-		passengers.remove(Integer.valueOf(passengerId));
-		// remove the booked ticket from the list
-		bookedTicketList.remove(Integer.valueOf(passengerId));
-
-		// take the booked position which is now free
-		int positionBooked = passenger.number;
-
-		System.out.println("---------------cancelled Successfully");
-
-		// add the free position to the correspoding type of list (either L,M,U)
-		if (passenger.alloted.equals(ClassPreference.FIRST)) {
-			available1stClass++;
-			FirstClassPossitions.add(positionBooked);
-		} else if (passenger.alloted.equals(ClassPreference.SECOND)) {
-			available2ndClass++;
-			SecondClassPositions.add(positionBooked);
-		} else if (passenger.alloted.equals(ClassPreference.THIRD)) {
-			available3rdClass++;
-			ThirdClassPositions.add(positionBooked);
-		}
-
-		// check if any RAC is there
-		if (racList.size() > 0) {
-			// take passenger from RAC and increase the free space in RAC list and increase
-			// available RAC tickets
-			Passenger passengerFromRAC = passengers.get(racList.poll());
-			int positionRac = passengerFromRAC.number;
-			racPositions.add(positionRac);
-			racList.remove(Integer.valueOf(passengerFromRAC.passengerId));
-			availableRacTickets++;
-
-			// check if any WL is there
-			if (waitingList.size() > 0) {
-				// take the passenger from WL and add them to RAC , increase the free space in
-				// waiting list and
-				// increase available WL and decrease available RAC by 1
-				Passenger passengerFromWaitingList = passengers.get(waitingList.poll());
-				int positionWL = passengerFromWaitingList.number;
-				waitingListPositions.add(positionWL);
-				waitingList.remove(Integer.valueOf(passengerFromWaitingList.passengerId));
-
-				passengerFromWaitingList.number = racPositions.get(0);
-				passengerFromWaitingList.alloted = "RAC";
-				racPositions.remove(0);
-				racList.add(passengerFromWaitingList.passengerId);
-
-				availableWaitingList++;
-				availableRacTickets--;
-			}
-			// now we have a passenger from RAc to whom we can book a ticket,
-			// so book the cancelled ticket to the RAC passenger
-			TicketBookingHandler ticketBookingHandler = new TicketBookingHandler();
-			ticketBookingHandler.bookTicket(passengerFromRAC);
-		}
-
+		CancelTicket cancelTicket = new CancelTicket(passengers, bookedTicketList, available1stClass, available2ndClass,
+				available3rdClass, FirstClassPossitions, SecondClassPositions, ThirdClassPositions, racList,
+				waitingList, racPositions, waitingListPositions, availableRacTickets, availableWaitingList);
+		cancelTicket.cancelTicket(passengerId);
 	}
 
 	// print all available seats
 	public void printAvailable() {
 		AvailableTickets availableTickets = new AvailableTickets();
-		availableTickets.printAvailable(available1stClass, available2ndClass, available3rdClass, availableRacTickets, availableWaitingList);
+		availableTickets.printAvailable(available1stClass, available2ndClass, available3rdClass, availableRacTickets,
+				availableWaitingList);
 	}
 
 	// print all occupied passengers from all types including WL
 	public void printPassengers() {
-		if (passengers.size() == 0) {
-			System.out.println("No details of passengers");
-			return;
-		}
-		for (Passenger p : passengers.values()) {
-			System.out.println("PASSENGER ID " + p.passengerId);
-			System.out.println(" Name " + p.name);
-			System.out.println(" Age " + p.age);
-			System.out.println(" Status " + p.number + p.alloted);
-			System.out.println("--------------------------");
-		}
+		BookedTickets bookedTickets = new BookedTickets();
+		bookedTickets.printPassengers(passengers);
 	}
+
 }
