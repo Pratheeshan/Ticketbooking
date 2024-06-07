@@ -1,23 +1,21 @@
 import java.util.*;
 
 public class TicketBooker implements TicketBookingService {
-	// 63 berths(upper ,lower , middle) + ( 18 RAC passengers)
-	// 10 waiting list tickets ->21 L, 21 M, 21U , 18RAC, 10WL
-	static int available1stClass = 1;// normally 21
-	static int available2ndClass = 1;// normally 21
-	static int available3rdClass = 1;// normally 21
-	static int availableRacTickets = 1;// normally 18
-	static int availableWaitingList = 1;// normally 10
+	static int available1stClass = 1;
+	static int available2ndClass = 1;
+	static int available3rdClass = 1;
+	static int availableRacTickets = 1;
+	static int availableWaitingList = 1;
 
 	static Queue<Integer> waitingList = new LinkedList<>();// queue of WL passengers
 	static Queue<Integer> racList = new LinkedList<>();// queu of RAC passengers
 	static List<Integer> bookedTicketList = new ArrayList<>();// list of bookedticket passengers
 
-	static List<Integer> FirstClassPossitions = new ArrayList<>(Arrays.asList(1));// normally 1,2,...21
-	static List<Integer> SecondClassPositions = new ArrayList<>(Arrays.asList(1));// normally 1,2,...21
-	static List<Integer> ThirdClassPositions = new ArrayList<>(Arrays.asList(1));// normally 1,2,...21
-	static List<Integer> racPositions = new ArrayList<>(Arrays.asList(1));// normally 1,2,...18
-	static List<Integer> waitingListPositions = new ArrayList<>(Arrays.asList(1));// normally 1,2,...10
+	static List<Integer> FirstClassPossitions = new ArrayList<>(Arrays.asList(1));
+	static List<Integer> SecondClassPositions = new ArrayList<>(Arrays.asList(1));
+	static List<Integer> ThirdClassPositions = new ArrayList<>(Arrays.asList(1));
+	static List<Integer> racPositions = new ArrayList<>(Arrays.asList(1));
+	static List<Integer> waitingListPositions = new ArrayList<>(Arrays.asList(1));	
 
 	static Map<Integer, Passenger> passengers = new HashMap<>();// map of passenger ids to passengers
 

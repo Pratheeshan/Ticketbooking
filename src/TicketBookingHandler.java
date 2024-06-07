@@ -13,7 +13,7 @@ public class TicketBookingHandler {
 		if ((passenger.classPreference.equals(ClassPreference.FIRST) && TicketBooker.available1stClass > 0)
 				|| (passenger.classPreference.equals(ClassPreference.SECOND) && TicketBooker.available2ndClass > 0)
 				|| (passenger.classPreference.equals(ClassPreference.THIRD) && TicketBooker.available3rdClass > 0)) {
-			System.out.println("Preferred Berth Available");
+			System.out.println("Preferred Class Available");
 			if (passenger.classPreference.equals(ClassPreference.FIRST)) {
 				BookingStrategy bookingStrategy = new FirstClassBooking();
 				bookingStrategy.book(passenger);
