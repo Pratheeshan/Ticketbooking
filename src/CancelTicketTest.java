@@ -62,7 +62,7 @@ class CancelTicketTest {
 		cancelTicket.cancelTicket(2);
 		System.out.print("Cancel line working");
 
-		/*// Verify the passenger is removed from the map
+		// Verify the passenger is removed from the map
 		assertFalse(passengers.containsKey(1));
 		// Verify the ticket is removed from the bookedTicketList
 		assertFalse(bookedTicketList.contains(1));
@@ -80,7 +80,7 @@ class CancelTicketTest {
 		// Check if the passenger from RAC is booked
 		assertEquals("RAC", passengers.get(100).alloted);
 		assertTrue(bookedTicketList.contains(100));
-		assertEquals(1, cancelTicket.availableRacTickets);*/
+		assertEquals(1, cancelTicket.availableRacTickets);
 	}
 
 }

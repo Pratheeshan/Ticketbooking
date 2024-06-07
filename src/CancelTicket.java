@@ -59,7 +59,7 @@ public class CancelTicket {
 		int positionBooked = passenger.number;
 
 		System.out.println("---------------cancelled Successfully");
-/*
+
 		// add the free position to the correspoding type of list (either L,M,U)
 		if (passenger.alloted.equals(ClassPreference.FIRST)) {
 			available1stClass++;
@@ -106,7 +106,7 @@ public class CancelTicket {
 			ticketBookingHandler.bookTicket(passengerFromRAC);
 			
 			//passenger.update(" Status updated" + passenger.number + passenger.alloted);
-		}*/
+		}
 
 	}
 
