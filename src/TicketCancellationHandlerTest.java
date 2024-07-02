@@ -39,12 +39,12 @@ class TicketCancellationHandlerTest {
 	void cancelTicketHandlerTest() {
 		try {
 			
-			TicketCancellationHandler.cancelTicket(passenger.passengerId);
+			TicketCancellationHandler.cancelTicket(passenger.getPassengerId());
 			System.out.println("Ticket cancel method working");
 			// Print message if Ticket cancel executes successfully
-			assertFalse(TicketBooker.passengers.containsKey(passenger.passengerId));
+			assertFalse(TicketBooker.passengers.containsKey(passenger.getPassengerId()));
             // Verify that the bookedTicketList no longer contains the passenger
-            assertFalse(TicketBooker.bookedTicketList.contains(passenger.passengerId));
+            assertFalse(TicketBooker.bookedTicketList.contains(passenger.getPassengerId()));
 		} catch (Exception e) {
 			System.out.println("Ticket cancel method failed: " + e.getMessage()); // Print error message if Ticket cancel
 																				// fails

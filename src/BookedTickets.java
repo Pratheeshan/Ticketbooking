@@ -2,17 +2,18 @@ import java.util.Map;
 
 public class BookedTickets {
 	public void printPassengers(Map<Integer, Passenger> passengers) {
-		if (passengers.size() == 0) {
-			System.out.println("No details of passengers");
-			return;
-		}
-		for (Passenger passenger : passengers.values()) {
-			System.out.println("PASSENGER ID " + passenger.passengerId);
-			System.out.println(" Name " + passenger.name);
-			System.out.println(" Age " + passenger.age);
-			System.out.println(" Status " + passenger.number + passenger.alloted);
-			System.out.println("--------------------------");
-		}
+	    if (passengers.isEmpty()) {
+	        System.out.println("No details of passengers");
+	        return;
+	    }
+	    passengers.values().stream()
+	              .map(passenger -> String.format("PASSENGER ID %d\n Name %s\n Age %d\n Status %d%s\n--------------------------",
+	                                               passenger.getPassengerId(),
+	                                               passenger.getName(),
+	                                               passenger.getAge(),
+	                                               passenger.getNumber(),
+	                                               passenger.getAlloted()))
+	              .forEach(System.out::println);
 	}
 
 }

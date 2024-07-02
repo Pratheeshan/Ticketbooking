@@ -23,9 +23,9 @@ class UserInputHandlerTest {
 
         // Get user details and verify the values
         Passenger passenger = userInputHandler.getUserDetails();
-        assertEquals("John", passenger.name);
-        assertEquals(30, passenger.age);
-        assertEquals(ClassPreference.FIRST, passenger.classPreference);
+        assertEquals("John", passenger.getName());
+        assertEquals(30, passenger.getAge());
+        assertEquals(ClassPreference.FIRST, passenger.getClassPreference());
 	}
 
 }

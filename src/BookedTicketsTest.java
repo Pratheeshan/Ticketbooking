@@ -46,9 +46,9 @@ class BookedTicketsTest {
 
 		// Check if the passengers are correctly added to the map
 		assertEquals(3, passengers.size());
-		assertEquals("Santhanam", passengers.get(1).name);
-		assertEquals("Amar", passengers.get(2).name);
-		assertEquals("Vikram", passengers.get(3).name);
+		assertEquals("Santhanam", passengers.get(1).getName());
+		assertEquals("Amar", passengers.get(2).getName());
+		assertEquals("Vikram", passengers.get(3).getName());
 		
 		BookedTickets bookedTickets = new BookedTickets();
 		bookedTickets.printPassengers(passengers);

@@ -20,6 +20,8 @@ public class Main {
 				// booking
 				TicketBookingHandler ticketBookingHandler = new TicketBookingHandler();
 				ticketBookingHandler.bookTicket(passenger);
+				
+				
 			}
 				break;
 			// cancel ticket

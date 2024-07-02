@@ -10,21 +10,21 @@ public class TicketBookingHandler {
 			return;
 		}
 		// check if preferred berth is available
-		if ((passenger.classPreference.equals(ClassPreference.FIRST) && TicketBooker.available1stClass > 0)
-				|| (passenger.classPreference.equals(ClassPreference.SECOND) && TicketBooker.available2ndClass > 0)
-				|| (passenger.classPreference.equals(ClassPreference.THIRD) && TicketBooker.available3rdClass > 0)) {
+		if ((passenger.getClassPreference().equals(ClassPreference.FIRST) && TicketBooker.available1stClass > 0)
+				|| (passenger.getClassPreference().equals(ClassPreference.SECOND) && TicketBooker.available2ndClass > 0)
+				|| (passenger.getClassPreference().equals(ClassPreference.THIRD) && TicketBooker.available3rdClass > 0)) {
 			System.out.println("Preferred Class Available");
-			if (passenger.classPreference.equals(ClassPreference.FIRST)) {
+			if (passenger.getClassPreference().equals(ClassPreference.FIRST)) {
 				BookingStrategy bookingStrategy = new FirstClassBooking();
 				bookingStrategy.book(passenger);
 			}
 
-			else if (passenger.classPreference.equals(ClassPreference.SECOND)) {
+			else if (passenger.getClassPreference().equals(ClassPreference.SECOND)) {
 				BookingStrategy bookingStrategy = new SecondClassBooking();
 				bookingStrategy.book(passenger);
 			}
 
-			else if (passenger.classPreference.equals(ClassPreference.THIRD)) {
+			else if (passenger.getClassPreference().equals(ClassPreference.THIRD)) {
 				BookingStrategy bookingStrategy = new ThirdClassBooking();
 				bookingStrategy.book(passenger);
 			}

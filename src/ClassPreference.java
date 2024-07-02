@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public enum ClassPreference {
 	FIRST("1"), SECOND("2"), THIRD("3");
@@ -9,11 +10,9 @@ public enum ClassPreference {
 	}
 
 	public static ClassPreference fromString(String value) {
-		for (ClassPreference preference : ClassPreference.values()) {
-			if (preference.value.equals(value)) {
-				return preference;
-			}
-		}
-		throw new IllegalArgumentException("Invalid class preference: " + value);
+	    return Arrays.stream(ClassPreference.values())
+	                 .filter(preference -> preference.value.equals(value))
+	                 .findFirst()
+	                 .orElseThrow(() -> new IllegalArgumentException("Invalid class preference: " + value));
 	}
-}
+	}

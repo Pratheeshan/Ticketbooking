@@ -6,7 +6,7 @@ public class ThirdClassBooking implements BookingStrategy {
 		System.out.println("3rd Class Given");
 		// call booking function in the TicketBooker class
 		TicketBookingService ticketBookingService = new TicketBooker();
-		ticketBookingService.bookTicket(p, (TicketBooker.ThirdClassPositions.get(0)), ".Class3");
+		ticketBookingService.bookTicket(p, (TicketBooker.ThirdClassPositions.get(0)), "THIRD");
 		// remove the booked position from available positions and also decrease
 		// available seats of that
 		// particular type

@@ -6,7 +6,7 @@ public class SecondClassBooking implements BookingStrategy {
 		System.out.println("2nd Class Given");
 		// call booking function in the TicketBooker class
 		TicketBookingService ticketBookingService = new TicketBooker();
-		ticketBookingService.bookTicket(p, (TicketBooker.SecondClassPositions.get(0)), ".Class2");
+		ticketBookingService.bookTicket(p, (TicketBooker.SecondClassPositions.get(0)), "SECOND");
 		// remove the booked position from available positions and also decrease
 		// available seats of that
 		// particular type
